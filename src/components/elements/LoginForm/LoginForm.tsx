@@ -2,7 +2,7 @@
 
 import { TextInput, Button, Box } from '@mantine/core';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 const LoginForm = () => {
@@ -11,7 +11,6 @@ const LoginForm = () => {
     password: '',
     isValid: false
   });
-
   const { push } = useRouter();
 
   const handleStateChange = (v: string | boolean, key: string) => {
@@ -32,6 +31,7 @@ const LoginForm = () => {
         { withCredentials: true }
       )
       .then((res) => {
+        console.log(res);
         alert(`welcome ${res.data.data.name}`);
         push('/');
       })
@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   return (
     <Box maw={340} mx="auto">
-      <div className="flex flex-col justify-center">
+      <form className="flex flex-col justify-center">
         <div className="flex flex-col gap-4">
           <TextInput
             label="Username"
@@ -79,7 +79,7 @@ const LoginForm = () => {
           className="relative mx-auto mt-6 mb-4">
           Login
         </Button>
-      </div>
+      </form>
     </Box>
   );
 };
