@@ -3,17 +3,18 @@
 import { TextInput, Button, Box } from '@mantine/core';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const LoginForm = () => {
   const [state, setState] = useState({
     username: '',
-    password: ''
+    password: '',
+    isValid: false
   });
 
   const { push } = useRouter();
 
-  const handleStateChange = (v: string, key: string) => {
+  const handleStateChange = (v: string | boolean, key: string) => {
     setState((prev) => ({
       ...prev,
       [key]: v
@@ -39,6 +40,12 @@ const LoginForm = () => {
       });
   };
 
+  useEffect(() => {
+    if (state.username.length < 4 || state.password.length < 4) handleStateChange(false, 'isValid');
+    else if (state.username.length > 3 && state.password.length > 3)
+      handleStateChange(true, 'isValid');
+  }, [state.username, state.password]);
+
   return (
     <Box maw={340} mx="auto">
       <div className="flex flex-col justify-center">
@@ -63,6 +70,7 @@ const LoginForm = () => {
           />
         </div>
         <Button
+          disabled={!state.isValid}
           variant="outline"
           color="white"
           size="md"
