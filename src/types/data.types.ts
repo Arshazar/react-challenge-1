@@ -1,1 +1,1 @@
-export type GridItem = { name: string };
+export type GridItem = { id: string; name: string };

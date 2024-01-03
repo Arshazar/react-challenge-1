@@ -23,7 +23,7 @@ const LoginForm = () => {
   const handleSubmit = () => {
     axios
       .post(
-        'api/login',
+        'api/auth/login',
         {
           username: state.username,
           password: state.password
@@ -48,6 +48,8 @@ const LoginForm = () => {
             placeholder="username"
             name="username"
             value={state.username}
+            required
+            type="email"
             onChange={({ target: { value } }) => handleStateChange(value, 'username')}
           />
           <TextInput
@@ -55,6 +57,7 @@ const LoginForm = () => {
             placeholder="password"
             name="password"
             type="password"
+            required
             value={state.password}
             onChange={({ target: { value } }) => handleStateChange(value, 'password')}
           />
