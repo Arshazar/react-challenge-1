@@ -1,36 +1,74 @@
 'use client';
 
-import { FormEvent } from 'react';
-import { useForm } from '@mantine/form';
 import { TextInput, Button, Box } from '@mantine/core';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const LoginForm = () => {
-  const form = useForm({
-    initialValues: {
-      email: '',
-      termsOfService: false
-    },
-
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email')
-    }
+  const [state, setState] = useState({
+    username: '',
+    password: ''
   });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const { push } = useRouter();
+
+  const handleStateChange = (v: string, key: string) => {
+    setState((prev) => ({
+      ...prev,
+      [key]: v
+    }));
+  };
+
+  const handleSubmit = () => {
+    axios
+      .post(
+        'api/login',
+        {
+          username: state.username,
+          password: state.password
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        alert(`welcome ${res.data.data.name}`);
+        push('/');
+      })
+      .catch((err) => {
+        alert(err.response.data.error);
+      });
   };
 
   return (
     <Box maw={340} mx="auto">
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
+      <div className="flex flex-col justify-center">
         <div className="flex flex-col gap-4">
-          <TextInput label="Username" placeholder="username" name="username" />
-          <TextInput label="Password" placeholder="password" name="password" />
+          <TextInput
+            label="Username"
+            placeholder="username"
+            name="username"
+            value={state.username}
+            onChange={({ target: { value } }) => handleStateChange(value, 'username')}
+          />
+          <TextInput
+            label="Password"
+            placeholder="password"
+            name="password"
+            type="password"
+            value={state.password}
+            onChange={({ target: { value } }) => handleStateChange(value, 'password')}
+          />
         </div>
-        <Button variant="filled" color="red" size="md" radius="lg" type="submit">
+        <Button
+          variant="filled"
+          color="red"
+          size="md"
+          radius="lg"
+          onClick={handleSubmit}
+          className="relative mx-auto mt-6 mb-4">
           Login
         </Button>
-      </form>
+      </div>
     </Box>
   );
 };
