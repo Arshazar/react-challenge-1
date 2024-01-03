@@ -19,7 +19,7 @@
     font-family: Roboto, sans-serif;
   }
   body {
-    @apply min-h-screen w-full overflow-x-hidden box-border antialiased;
+    @apply flex-1 min-h-screen w-full overflow-x-hidden box-border antialiased bg-gradient-to-br from-green-700 to-indigo-900;
   }
   *::-webkit-scrollbar {
     @apply w-1.5;
