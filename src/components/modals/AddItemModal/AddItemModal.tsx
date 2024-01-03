@@ -35,7 +35,7 @@ const AddItemModal = ({ onClose, opened, cb }: Props) => {
       className="p-3">
       <TextInput value={name} name="name" onChange={({ target: { value } }) => setName(value)} />
       <div className="flex justify-center gap-4 mt-6">
-        <Button color="green" onClick={() => handleAddItem()}>
+        <Button color="green" onClick={() => handleAddItem()} variant="outline">
           Add
         </Button>
         <Button onClick={onClose} variant="outline">

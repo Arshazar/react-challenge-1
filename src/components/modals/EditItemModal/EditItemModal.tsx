@@ -32,10 +32,10 @@ const EditItemModal = ({
         onChange={({ target: { value } }) => handleEditItem(value)}
       />
       <div className="flex justify-center gap-4 mt-6">
-        <Button color="green" onClick={() => handleSubmitEditItem()}>
+        <Button color="green" onClick={() => handleSubmitEditItem()} variant="outline">
           Submit Edit
         </Button>
-        <Button color="red" onClick={handleDeleteItem}>
+        <Button color="red" onClick={handleDeleteItem} variant="outline">
           Delete
         </Button>
         <Button onClick={onClose} variant="outline">

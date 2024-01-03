@@ -63,8 +63,8 @@ const LoginForm = () => {
           />
         </div>
         <Button
-          variant="filled"
-          color="red"
+          variant="outline"
+          color="white"
           size="md"
           radius="lg"
           onClick={handleSubmit}

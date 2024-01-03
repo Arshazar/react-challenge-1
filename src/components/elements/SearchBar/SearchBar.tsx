@@ -23,7 +23,7 @@ const SearchBar = ({ onChange, searchField, addItemCb }: Props) => {
           value={searchField}
           onChange={({ target: { value } }) => onChange(value)}
         />
-        <Button color="orange" onClick={open}>
+        <Button color="orange" onClick={open} variant="outline">
           Add
         </Button>
       </div>
