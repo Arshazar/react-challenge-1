@@ -76,6 +76,7 @@ const DataGrid = () => {
         handleStateChange(newItems as GridItemType[], 'items');
         alert('The item was edited successfully!');
         close();
+        // handleFetchData();
       })
       .catch(() => {
         alert('Error occured while editing the item! Please try again.');
@@ -92,6 +93,7 @@ const DataGrid = () => {
         handleStateChange(newItems as GridItemType[], 'items');
         alert('The item was deleted successfully!');
         close();
+        // handleFetchData();
       })
       .catch(() => alert('Error occured while deleting the item, Please try again!'));
   };
