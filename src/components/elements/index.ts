@@ -1,3 +1,4 @@
 export * from './LoginForm/LoginForm';
-export * from './DataGrid/DataGrid';
+export * from './Main/Main';
 export * from './SearchBar/SearchBar';
+export * from './DataGrid/DataGrid';

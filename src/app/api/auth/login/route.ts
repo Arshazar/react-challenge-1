@@ -1,4 +1,4 @@
-import { api } from '@/utils';
+import { api } from '@/lib';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 

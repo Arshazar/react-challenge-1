@@ -1,9 +1,9 @@
-import { DataGrid } from '@/components/elements';
+import { Main } from '@/components/elements';
 
 export default function Home() {
   return (
     <div className="container">
-      <DataGrid />
+      <Main />
     </div>
   );
 }

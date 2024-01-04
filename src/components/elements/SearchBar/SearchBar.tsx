@@ -7,10 +7,9 @@ import { AddItemModal } from '@/components/modals';
 type Props = {
   onChange: (v: string) => void;
   searchField: string;
-  addItemCb: () => void;
 };
 
-const SearchBar = ({ onChange, searchField, addItemCb }: Props) => {
+const SearchBar = ({ onChange, searchField }: Props) => {
   const [opened, { open, close }] = useDisclosure(false);
 
   return (
@@ -27,7 +26,7 @@ const SearchBar = ({ onChange, searchField, addItemCb }: Props) => {
           Add
         </Button>
       </div>
-      <AddItemModal opened={opened} onClose={close} cb={addItemCb} />
+      <AddItemModal opened={opened} onClose={close} />
     </>
   );
 };
