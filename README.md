@@ -14,10 +14,20 @@ pnpm dev
 bun dev
 ```
 
-##### Test user
+#### Test user
 
 username: test@test.com
 password: 1234
+
+#### E2E tests
+
+```bash
+npx playwright install-deps
+# and then:
+yarn build
+yarn start
+npx playwright test
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
